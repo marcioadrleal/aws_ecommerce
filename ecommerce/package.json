@@ -2,7 +2,7 @@
   "name": "ecommerce",
   "version": "0.1.0",
   "bin": {
-    "ecommerce": "bin/ecommerce.js"
+    "ecommerce": "bin/e_commerce_aws-stack.js"
   },
   "scripts": {
     "build": "tsc",
