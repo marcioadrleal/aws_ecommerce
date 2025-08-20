@@ -37,7 +37,7 @@ export class ProductsAppStack extends cdk.Stack {
          runtime: lambda.Runtime.NODEJS_22_X,
          functionName: "ProductsAdminFunction",
          entry: "lambda/products/productsAdminFunction.ts",
-         memorySize: 256,
+         memorySize: 512,
          timeout: cdk.Duration.seconds(10),
          bundling: {
             minify: true,
@@ -46,7 +46,8 @@ export class ProductsAppStack extends cdk.Stack {
          environment: {
             PRODUCTS_DDB: this.productsDbd.tableName
          },
-         layers: [productLayer]
+         layers: [productLayer],
+         tracing: lambda.Tracing.ACTIVE
 
       })
 
@@ -55,7 +56,7 @@ export class ProductsAppStack extends cdk.Stack {
          functionName: "ProductsFetchFunction",
          entry: "lambda/products/productsFetchFunction.ts",
          handler: "handler",
-         memorySize: 256,
+         memorySize: 512,
          timeout: cdk.Duration.seconds(10),
          bundling: {
             minify: true,
@@ -64,7 +65,8 @@ export class ProductsAppStack extends cdk.Stack {
          environment: {
             PRODUCTS_DDB: this.productsDbd.tableName
          },
-         layers: [productLayer]
+         layers: [productLayer],
+         tracing: lambda.Tracing.ACTIVE
       })
       this.productsDbd.grantReadData(this.productsFetchHandler)
       this.productsDbd.grantWriteData(this.productsAdminHandler)
