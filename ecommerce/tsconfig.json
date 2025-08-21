@@ -25,7 +25,8 @@
     ] ,
     "baseUrl": "./" ,
     "paths": {  
-      "/opt/nodejs/productsLayer" : [ "lambda/products/layers/productLayer/nodejs/productRepository" ]
+      "/opt/nodejs/productsLayer" : [ "lambda/products/layers/productLayer/nodejs/productRepository" ] ,
+      "/opt/nodejs/productEventsLayer" : [ "lambda/products/layers/productEventsLayer/nodejs/productEvent" ] ,
     }
   },
   "exclude": [
